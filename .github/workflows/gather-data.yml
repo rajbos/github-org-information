@@ -13,6 +13,20 @@ jobs:
           const repos = await github.paginate(github.rest.repos.listForOrg, {org: process.env.org})
           console.log(`Found ${repos.length} repos`)
 
+          function updateTopic(newTopic, repo) {
+            newTopic.count++
+            switch (repo.visibliity) {
+              case 'internal':
+                newTopic.internal++
+                break
+              case 'private':
+                newTopic.private++
+                break
+              case 'public':
+                newTopic.public++
+                break
+          }
+
           // loop over the repos and print their topics from the topics array property
           // array to hold the name and count
           var foundTopics = []
@@ -29,11 +43,13 @@ jobs:
                 const index = foundTopics.findIndex(t => t.name === topic)
                 if (index === -1) {
                   // if not, add it
-                  foundTopics.push({name: topic, count: 1})
+                  var newTopic = {name: topic, count: 0, internal:0, private: 0, public: 0}
+                  updateTopic(newTopic, repo)
+                  foundTopics.push()
                 }
                 else {
-                  // if it is, increment the count
-                  foundTopics[index].count++
+                  // if it is, increment the counts
+                  updateTopic(foundTopics[index], repo)                  
                 }
               }
 
