@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/github-script@v6
+      id: get-repo-info
       env:
         org: devops-actions
       with:
@@ -72,3 +73,30 @@ jobs:
           console.log(sorted)
           console.log(`----------------------------`)
           console.log(`Repos without topics: ${reposWithOutTopics}`)
+
+          // write the info to a file
+          const fs = require('fs')
+          fs.writeFileSync('topics.json', JSON.stringify(sorted, null, 2))
+
+          // and store the file in the file GITHUB_OUTPUT env var
+          core.exportVariable('summary-file', 'topics.json')
+
+    - name: Show information in the GITHUB_STEP_SUMMARY
+      uses: actions/github-script@v6
+      env:
+        summaryFile: ${{ steps.get-repo-info.outputs.summary-file }}
+      with: 
+        script: |
+          const fs = require('fs')
+          const summary = fs.readFileSync(process.env.summaryFile, 'utf8')
+
+          await core.summary
+                    .addHeading('Results')
+                    .addTable([
+                      [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
+                      ['foo.js', 'Pass ✅', 1,2,3,4],
+                      ['bar.js', 'Fail ❌', 1,2,3,4],
+                      ['test.js', 'Pass ✅', 1,2,3,4]
+                    ])
+                    .write()
+          
