@@ -79,7 +79,7 @@ jobs:
           fs.writeFileSync('topics.json', JSON.stringify(sorted, null, 2))
 
           // and store the file in the file GITHUB_OUTPUT env var
-          core.exportVariable('summary-file', 'topics.json')
+          core.setOutput('summary-file', 'topics.json')
 
     - name: Show information in the GITHUB_STEP_SUMMARY
       uses: actions/github-script@v6
