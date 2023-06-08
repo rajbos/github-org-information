@@ -15,5 +15,5 @@ jobs:
           // loop over the repos and print their topics from the topics array property
           for (const repo of repos) {
             const {data: topics} = repo.topics
-            console.log(`${repo.name}: ${topics.names.join(', ')}`)
+            console.log(`${repo.name}: ${topics.join(', ')}`)
           }
