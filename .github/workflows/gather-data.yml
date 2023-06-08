@@ -1,0 +1,19 @@
+on: push
+
+jobs:
+  get-repo-info:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/github-script@v6
+      env:
+        org: devops-actions
+      with:
+        script: |
+          // load all repos from the org, with pagination
+          const repos = await github.paginate(github.repos.listForOrg, {org: process.env.org})
+
+          // loop over the repos and print their topics from the topics array property
+          for (const repo of repos) {
+            const {data: topics} = repo.topics
+            console.log(`${repo.name}: ${topics.names.join(', ')}`)
+          }
