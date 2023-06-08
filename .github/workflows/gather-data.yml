@@ -25,6 +25,7 @@ jobs:
               case 'public':
                 newTopic.public++
                 break
+            }
           }
 
           // loop over the repos and print their topics from the topics array property
