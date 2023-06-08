@@ -18,12 +18,15 @@ jobs:
             switch (repo.visibliity) {
               case 'internal':
                 newTopic.internal++
+                console.log(`internal++`)
                 break
               case 'private':
                 newTopic.private++
+                console.log(`private++`)
                 break
               case 'public':
                 newTopic.public++
+                console.log(`public++`)
                 break
             }
             
