@@ -24,7 +24,7 @@ jobs:
                 newTopic.private++
                 console.log(`private++`)
                 break
-              case 'public':
+              case "public":
                 newTopic.public++
                 console.log(`public++`)
                 break
