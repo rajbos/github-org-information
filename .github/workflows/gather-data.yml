@@ -28,9 +28,12 @@ jobs:
                 newTopic.public++
                 console.log(`public++`)
                 break
+              default:
+                console.log(`Unknown visibility: ${repo.visibility}`)
+                break
             }
             
-            console.log(`Updating ${newTopic.name} | ${newTopic.public} | ${newTopic.private} | ${newTopic.internal} | ${newTopic.count} from repo with visibility ${repo.visibility}`)
+            console.log(`Updating ${newTopic.name} | ${newTopic.public} | ${newTopic.private} | ${newTopic.internal} | ${newTopic.count} from repo with visibility [${repo.visibility}]`)
 
             return newTopic
           }
