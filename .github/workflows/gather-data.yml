@@ -15,7 +15,7 @@ jobs:
 
           function updateTopic(newTopic, repo) {
             newTopic.count++
-            switch (repo.visibliity) {
+            switch (repo.visibility) {
               case 'internal':
                 newTopic.internal++
                 console.log(`internal++`)
