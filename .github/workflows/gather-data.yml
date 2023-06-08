@@ -104,18 +104,20 @@ jobs:
           // join the two arrays
           const tableArray = [headingArray, ...summaryArray]
 
-          console.log(`tableArray` + JSON.stringify(tableArray))
+          console.log(`tableArray:`)
+          console.log(JSON.stringify(tableArray))
 
           await core.summary
                     .addHeading('Topics used on repos in the [${process.env.org}] organization')
                     .addTable(tableArray)
                     .write()
-          
 
-
-# .addTable([
-#                       [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
-#                       ['foo.js', 'Pass ✅', 1,2,3,4],
-#                       ['bar.js', 'Fail ❌', 1,2,3,4],
-#                       ['test.js', 'Pass ✅', 1,2,3,4]
-#                     ])
+          await core.summary
+                    .addHeading('Example')
+                    .addTable([
+                                [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
+                                ['foo.js',  1,2,3,4],
+                                ['bar.js',  1,2,3,4],
+                                ['test.js', 1,2,3,4]
+                              ])
+                    .write()
