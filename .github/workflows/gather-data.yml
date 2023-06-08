@@ -91,8 +91,8 @@ jobs:
           const fs = require('fs')
           const summary = fs.readFileSync(process.env.summaryFile, 'utf8')
 
-          // make the heading array for the core.summary method  [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
-          const headingArray = [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}]
+          // make the heading array for the core.summary method
+          const headingArray = [{data: 'Topic', header: true}, {data: 'Count', header: true}, {data: 'Public', header: true},{data: 'Internal', header: true},{data: 'Private', header: true}]
         
           // convert the summary array into an array that can be passed into the core.summary method
           const summaryArray = JSON.parse(summary).map(t => [t.name, t.count.toString(), t.public.toString(), t.internal.toString(), t.private.toString()])
@@ -108,7 +108,7 @@ jobs:
           await core.summary
                     .addHeading('Example')
                     .addTable([
-                                [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
+                                [{data: 'Topic', header: true}, {data: 'Count', header: true}, {data: 'Public', header: true},{data: Internal', header: true},{data: 'Private', header: true}],
                                 ['foo.js' , "1","2","3","4"],
                                 ['bar.js' , '1','2','3','4'],
                                 ['test.js', 100,200,300,400]
