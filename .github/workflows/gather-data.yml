@@ -15,10 +15,13 @@ jobs:
           // loop over the repos and print their topics from the topics array property
           for (const repo of repos) {
             const {data: topics} = repo.topics
-            if (topics.length > 0) {
-              console.log(`${repo.name}: ${topics.join(', ')}`)
-            }
-            else {
-              console.log(`${repo.name}: No topics`)
-            }
+
+            console.log(`${repo.name}: ${topics}`)
+            
+            //if (topics.length > 0) {
+            //  console.log(`${repo.name}: ${topics.join(', ')}`)
+            //}
+            //else {
+            //  console.log(`${repo.name}: No topics`)
+            //}
           }
