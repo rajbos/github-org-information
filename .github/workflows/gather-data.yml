@@ -97,7 +97,7 @@ jobs:
           const headingArray = [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}]
         
           // convert the summary array into an array that can be passed into the core.summary method
-          const summaryArray = JSON.parse(summary).map(t => [t.name, t.count, t.public, t.internal, t.private])
+          const summaryArray = JSON.parse(summary).map(t => [t.name, t.count.toString(), t.public.toString(), t.internal.toString(), t.private.toString()])
 
           console.log(`summaryArray` + JSON.stringify(summaryArray))
 
