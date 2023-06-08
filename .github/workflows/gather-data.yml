@@ -13,19 +13,39 @@ jobs:
           const repos = await github.paginate(github.rest.repos.listForOrg, {org: process.env.org})
 
           // loop over the repos and print their topics from the topics array property
+          // array to hold the name and count
+          const topics = []
+          const reposWithOutTopics = 0
           for (const repo of repos) {
             const topics = repo.topics
 
             if (topics && topics.length > 0) {
               console.log(`${repo.name}: ${topics.join(', ')}`)
+
+              // loop over the topics and add them to the array
+              for (const topic of topics) {
+                // check if the topic is already in the array
+                const index = topics.findIndex(t => t.name === topic)
+                if (index === -1) {
+                  // if not, add it
+                  topics.push({name: topic, count: 1})
+                }
+                else {
+                  // if it is, increment the count
+                  topics[index].count++
+                }
+              }
+
             }
             else {
               console.log(`${repo.name}: No topics`)
-              console.log(`${repo.name}: ${topics}`)
-            }
-
-            if (repo.name === `load-available-actions`) {
-              // dump the repo object to the console
-              console.log(repo)  
+              reposWithOutTopics++
             }
           }
+
+          // sort the array by count
+          const sorted = topics.sort((a, b) => b.count - a.count)
+          // show the counts
+          console.log(sorted)
+          console.log(`----------------------------`)
+          console.log(`Repos without topics: ${reposWithOutTopics}`)
