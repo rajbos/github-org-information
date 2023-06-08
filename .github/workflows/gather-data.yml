@@ -11,6 +11,7 @@ jobs:
         script: |
           // load all repos from the org, with pagination
           const repos = await github.paginate(github.rest.repos.listForOrg, {org: process.env.org})
+          console.log(`Found ${repos.length} repos`)
 
           // loop over the repos and print their topics from the topics array property
           // array to hold the name and count
