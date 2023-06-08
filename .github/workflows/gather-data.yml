@@ -116,8 +116,8 @@ jobs:
                     .addHeading('Example')
                     .addTable([
                                 [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
-                                ['foo.js',  1,2,3,4],
-                                ['bar.js',  1,2,3,4],
-                                ['test.js', 1,2,3,4]
+                                ['foo.js' , 'Hmp', 1,2,3,4],
+                                ['bar.js' , 'Hmp', 1,2,3,4],
+                                ['test.js', 'Hmp', 1,2,3,4]
                               ])
                     .write()
