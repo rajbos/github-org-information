@@ -1,13 +1,14 @@
 on: push
 
+env:
+  org: devops-actions
+
 jobs:
   get-repo-info:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/github-script@v6
       id: get-repo-info
-      env:
-        org: devops-actions
       with:
         script: |
           // load all repos from the org, with pagination
@@ -89,6 +90,8 @@ jobs:
         script: |
           const fs = require('fs')
           const summary = fs.readFileSync(process.env.summaryFile, 'utf8')
+
+          console.log(summary)
           
           // make the heading array for the core.summary method  [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}],
           const headingArray = [{data: 'Topic', header: true}, {data: 'count', header: true}, {data: 'public', header: true},{data: 'internal', header: true},{data: 'private', header: true}]
@@ -96,11 +99,13 @@ jobs:
           // convert the summary array into an array that can be passed into the core.summary method
           const summaryArray = JSON.parse(summary).map(t => [t.name, t.count, t.public, t.internal, t.private])
 
+          console.log(`summaryArray` + summaryArray)
+
           // join the two arrays
           const tableArray = [headingArray, ...summaryArray]
 
           await core.summary
-                    .addHeading('Results')
+                    .addHeading('Topics used on repos in the [${process.env.org}] organization')
                     .addTable(tableArray)
                     .write()
           
