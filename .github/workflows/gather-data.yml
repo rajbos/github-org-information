@@ -10,7 +10,7 @@ jobs:
       with:
         script: |
           // load all repos from the org, with pagination
-          const repos = await github.paginate(github.repos.listForOrg, {org: process.env.org})
+          const repos = await github.paginate(github.rest.repos.listForOrg, {org: process.env.org})
 
           // loop over the repos and print their topics from the topics array property
           for (const repo of repos) {
