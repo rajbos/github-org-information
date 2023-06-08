@@ -14,8 +14,8 @@ jobs:
 
           // loop over the repos and print their topics from the topics array property
           // array to hold the name and count
-          const foundTopics = []
-          const reposWithOutTopics = 0
+          var foundTopics = []
+          var reposWithOutTopics = 0
           for (const repo of repos) {
             const topics = repo.topics
 
