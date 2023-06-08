@@ -99,10 +99,12 @@ jobs:
           // convert the summary array into an array that can be passed into the core.summary method
           const summaryArray = JSON.parse(summary).map(t => [t.name, t.count, t.public, t.internal, t.private])
 
-          console.log(`summaryArray` + summaryArray)
+          console.log(`summaryArray` + JSON.stringify(summaryArray))
 
           // join the two arrays
           const tableArray = [headingArray, ...summaryArray]
+
+          console.log(`tableArray` + JSON.stringify(tableArray))
 
           await core.summary
                     .addHeading('Topics used on repos in the [${process.env.org}] organization')
