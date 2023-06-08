@@ -26,6 +26,8 @@ jobs:
                 newTopic.public++
                 break
             }
+
+            return newTopic
           }
 
           // loop over the repos and print their topics from the topics array property
@@ -45,7 +47,7 @@ jobs:
                 if (index === -1) {
                   // if not, add it
                   var newTopic = {name: topic, count: 0, internal:0, private: 0, public: 0}
-                  updateTopic(newTopic, repo)
+                  newTopic = updateTopic(newTopic, repo)
                   foundTopics.push(newTopic)
                 }
                 else {
