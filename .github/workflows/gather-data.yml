@@ -24,14 +24,6 @@ jobs:
                 newTopic.private++
                 console.log(`private++`)
                 break
-              case 'public':
-                newTopic.public++
-                console.log(`public with single quote++`)
-                break
-              case "public":
-                newTopic.public++
-                console.log(`public with double quote++`)
-                break
               case `public`:
                 newTopic.public++
                 console.log(`public with back tick++`)
