@@ -48,6 +48,7 @@ jobs:
                   // if not, add it
                   var newTopic = {name: topic, count: 0, internal:0, private: 0, public: 0}
                   newTopic = updateTopic(newTopic, repo)
+                  console.log(`Adding ${newTopic}`)
                   foundTopics.push(newTopic)
                 }
                 else {
