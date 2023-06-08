@@ -101,7 +101,7 @@ jobs:
           const tableArray = [headingArray, ...summaryArray]
 
           await core.summary
-                    .addHeading('Topics used on repos in the [${process.env.org}] organization')
+                    .addHeading(`Topics used on repos in the [${process.env.org}] organization`)
                     .addTable(tableArray)
                     .write()
 
