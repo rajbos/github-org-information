@@ -23,4 +23,9 @@ jobs:
               console.log(`${repo.name}: No topics`)
               console.log(`${repo.name}: ${topics}`)
             }
+
+            if (repo.name === `load-available-actions`) {
+              // dump the repo object to the console
+              console.log(repo)  
+            }
           }
