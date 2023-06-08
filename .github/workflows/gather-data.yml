@@ -104,13 +104,3 @@ jobs:
                     .addHeading(`Topics used on repos in the [${process.env.org}] organization`)
                     .addTable(tableArray)
                     .write()
-
-          await core.summary
-                    .addHeading('Example')
-                    .addTable([
-                                [{data: 'Topic', header: true}, {data: 'Count', header: true}, {data: 'Public', header: true},{data: Internal', header: true},{data: 'Private', header: true}],
-                                ['foo.js' , "1","2","3","4"],
-                                ['bar.js' , '1','2','3','4'],
-                                ['test.js', 100,200,300,400]
-                              ])
-                    .write()
