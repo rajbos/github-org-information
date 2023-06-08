@@ -16,12 +16,10 @@ jobs:
           for (const repo of repos) {
             const {data: topics} = repo.topics
 
-            console.log(`${repo.name}: ${topics}`)
-            
-            //if (topics.length > 0) {
-            //  console.log(`${repo.name}: ${topics.join(', ')}`)
-            //}
-            //else {
-            //  console.log(`${repo.name}: No topics`)
-            //}
+            if (topics && topics.length > 0) {
+              console.log(`${repo.name}: ${topics.join(', ')}`)
+            }
+            else {
+              console.log(`${repo.name}: No topics`)
+            }
           }
